@@ -2,8 +2,11 @@ import 'package:client_server/constants/colors.dart';
 import 'package:client_server/constants/image.dart';
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
+import 'package:client_server/login/login.dart';
+import 'package:client_server/signup/signup.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class WelcomeScreen extends StatelessWidget{
   const WelcomeScreen({super.key});
@@ -33,7 +36,7 @@ class WelcomeScreen extends StatelessWidget{
               ),
               Row(
                 children: [
-                  Expanded(child: OutlinedButton(onPressed: () {}, 
+                  Expanded(child: OutlinedButton(onPressed: () {Get.to(const Login());}, 
                   style: OutlinedButton.styleFrom(
                   shape: const RoundedRectangleBorder(),
                   foregroundColor:secondaryColor,
@@ -44,7 +47,9 @@ class WelcomeScreen extends StatelessWidget{
                   )
                   ),
                   const Gap(10),
-                  Expanded(child: ElevatedButton(onPressed: (){}, child: Text(signup.toUpperCase()),
+                  Expanded(child: ElevatedButton(onPressed: (){
+                    Get.to(const SignUp());
+                  }, child: Text(signup.toUpperCase()),
                   )
                   )
                 ],)

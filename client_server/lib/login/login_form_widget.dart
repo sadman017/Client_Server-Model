@@ -1,5 +1,6 @@
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
+import 'package:client_server/forget_password/forget_password_option/forget_password_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -37,7 +38,7 @@ class LoginForm extends StatelessWidget{
             Align(
               alignment:Alignment.centerRight,
               child: TextButton(
-                onPressed: () {  },
+                onPressed: () { ForgetPasswordScreen.buildShowModalBottomSheet(context); },
                 child: const Text(forgetPass)
                 ),
             ),
