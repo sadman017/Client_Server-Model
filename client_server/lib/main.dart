@@ -1,4 +1,5 @@
 import 'package:client_server/Welcome/welcome_screen.dart';
+import 'package:client_server/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,13 +12,15 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.system,
         defaultTransition: Transition.leftToRightWithFade,
-        transitionDuration: Duration(milliseconds: 300),
-        home: WelcomeScreen(), 
+        transitionDuration:const Duration(milliseconds: 300),
+        home: const WelcomeScreen(), 
       )
       );
   }
