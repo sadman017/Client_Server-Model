@@ -1,7 +1,9 @@
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
+import 'package:client_server/controllers/otp_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OTPScreen extends StatelessWidget{
@@ -9,6 +11,7 @@ class OTPScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    var otp = ' ';
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(defaultSize),
@@ -30,16 +33,19 @@ class OTPScreen extends StatelessWidget{
             ),
             const SizedBox(height: 20.0,),
             OtpTextField(
+              mainAxisAlignment: MainAxisAlignment.center,
               numberOfFields: 6,
               fillColor: Colors.transparent.withOpacity(0.1),
               filled: true,
-              onSubmit: (code){ debugPrint("OTP is => $code");},
+              onSubmit: (code){ otp = code;
+              OTPcontroller.instance.verifyOTP(otp);
+              },
             ),
-            const SizedBox(height: 20.0,),
+            const Gap(20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(onPressed: () {
-                
+                OTPcontroller.instance.verifyOTP(otp);
               }, child: const Text("Next"),),
             )
           ],

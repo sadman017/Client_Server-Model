@@ -1,6 +1,7 @@
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
 import 'package:client_server/controllers/signup_cotroller.dart';
+import 'package:client_server/forget_password/forget_password_otp/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -64,7 +65,9 @@ class SignupForm extends StatelessWidget{
               width: double.infinity,
               child: ElevatedButton(onPressed: () {
                 if(_formkey.currentState!.validate()){
-                  SignupController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                  // SignupController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                  SignupController.instance.phoneAuthentication(controller.mobileNo.text.trim());
+                  Get.to(() => const OTPScreen());
                 }
               }, 
               child: Text(signup.toUpperCase()),

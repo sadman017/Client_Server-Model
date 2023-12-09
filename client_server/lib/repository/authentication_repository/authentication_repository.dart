@@ -10,6 +10,7 @@ class AuthenticationRepository extends GetxController{
 
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
+  var verificationId = ''.obs;
 
   @override
   void onReady(){
@@ -22,6 +23,31 @@ class AuthenticationRepository extends GetxController{
   _setIntialScreen(User? user){
     user == null ? Get.offAll(() => const WelcomeScreen()): Get.offAll(()=> const Home() );
   }
+
+  Future<void> phoneAuthentication(String mobileNo) async{
+    await _auth.verifyPhoneNumber(
+      phoneNumber: mobileNo,
+      verificationCompleted: (credential)  async{
+      await _auth.signInWithCredential(credential);
+    }, verificationFailed: (e) {
+      if(e.code == "invalid-phone-nember"){
+        Get.snackbar('Error', 'The number is not valid');
+      }
+      else{
+        Get.snackbar('Error', 'Something went wrong, Try again');
+      }
+    }, codeSent: (verificationId, resendTOken){
+      this.verificationId.value = verificationId;
+    }, codeAutoRetrievalTimeout: (verificationId){
+      this.verificationId.value = verificationId;
+    });
+  }
+
+  Future<bool>verifyOTP(String otp) async{
+    var credentials = await _auth.signInWithCredential(PhoneAuthProvider.credential(verificationId: verificationId.value, smsCode: otp));
+    return credentials.user != null ? true: false;
+  }
+
   Future<void> createUserWithEmailAndPassword(String email, String password) async{
     try{
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -31,7 +57,11 @@ class AuthenticationRepository extends GetxController{
       debugPrint('FIREBASE AUTH EXCEPTION - ${ex.message}');
       throw ex;
     }
-    catch(_){}
+    catch(_){
+      const ex = SignUpWithEmailAndPasswordFailure();
+      debugPrint('EXCEPTION - ${ex.message}');
+      throw ex;
+    }
   }
 
    Future<void> loginWithEmailAndPassword(String email, String password) async{
