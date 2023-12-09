@@ -21,7 +21,7 @@ class SignUp extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FormHeaderWidget(size: size, image: toDo, title: signupTitle),
-                const SignupForm(),
+                 SignupForm(),
                 const SignupFooterWidget(),
               ],
             ),
