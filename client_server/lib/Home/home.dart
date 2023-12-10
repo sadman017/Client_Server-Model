@@ -26,7 +26,9 @@ class Home extends StatefulWidget{
       super.initState();
     }
     Widget allWork(){
-      return StreamBuilder( builder: (context, AsyncSnapshot snapshot){
+      return Container(
+        height: 200,
+      child: StreamBuilder( builder: (context, AsyncSnapshot snapshot){
         return snapshot.hasData? ListView.builder(padding: EdgeInsets.zero, itemCount: snapshot.data.docs.length, itemBuilder: (context,index){
           DocumentSnapshot ds = snapshot.data.docs[index];
           return CheckboxListTile(
@@ -39,7 +41,7 @@ class Home extends StatefulWidget{
             });
           });
         }):const CircularProgressIndicator();
-      }, stream: todoStream,);
+      }, stream: todoStream,));
     }
 
     TextEditingController todoController = TextEditingController();
