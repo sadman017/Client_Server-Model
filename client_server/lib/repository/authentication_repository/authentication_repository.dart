@@ -1,4 +1,4 @@
-import 'package:client_server/Home/home.dart';
+import 'package:client_server/home/home.dart';
 import 'package:client_server/Welcome/welcome_screen.dart';
 import 'package:client_server/repository/authentication_repository/exception/signup_failure.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class AuthenticationRepository extends GetxController{
   void onReady(){
     Future.delayed(const Duration(seconds: 5));
     firebaseUser =Rx<User?>(_auth.currentUser);
-    firebaseUser.bindStream(_auth.userChanges as Stream<User?>);
+    firebaseUser.bindStream(_auth.userChanges());
     ever(firebaseUser, _setIntialScreen);
   }
 

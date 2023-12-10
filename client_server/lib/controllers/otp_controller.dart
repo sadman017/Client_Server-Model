@@ -1,4 +1,4 @@
-import 'package:client_server/Home/home.dart';
+import 'package:client_server/home/home.dart';
 import 'package:client_server/repository/authentication_repository/authentication_repository.dart';
 import 'package:get/get.dart';
 

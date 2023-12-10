@@ -1,4 +1,5 @@
 import 'package:client_server/Welcome/welcome_screen.dart';
+import 'package:client_server/controllers/otp_controller.dart';
 import 'package:client_server/firebase_options.dart';
 import 'package:client_server/repository/authentication_repository/authentication_repository.dart';
 import 'package:client_server/utils/theme/theme.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 void main() {
    WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRepository()));
+  Get.put(OTPcontroller());
   runApp(const MyApp());
 }
 
@@ -24,7 +26,6 @@ class MyApp extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.system,
         defaultTransition: Transition.leftToRightWithFade,
-        transitionDuration:const Duration(milliseconds: 300),
         home: const WelcomeScreen(), 
       )
       );

@@ -1,4 +1,5 @@
 import 'package:client_server/common_widget/form/form_header.dart';
+import 'package:client_server/constants/image.dart';
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class ForgetPasswordMail extends StatelessWidget{
             child: Column(
               children: [
                 const SizedBox(height: defaultSize*4,),
-                FormHeaderWidget(size: size, image: forgetPass, title: resetViaEmail,
+                FormHeaderWidget(size: size, image: forgetPassImg, title: resetViaEmail,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 heightBetween: 30.0,
                 textAlign: TextAlign.center,),
