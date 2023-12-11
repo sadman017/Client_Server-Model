@@ -35,8 +35,8 @@ class Home extends StatefulWidget{
             activeColor: const Color(0xFF279cfb),
             title: Text(ds["Work"], style: const TextStyle(color: Colors.white, fontSize: 22.0, fontWeight: FontWeight.w400),
             ),
-            value: ds["yes"], onChanged: (newValue)async{
-              await DatabaseMethod().updateifTicked(ds["id"],today?"Today":tommorow? "Tommorow":"This Weekend" );
+            value: ds["Yes"], onChanged: (newValue)async{
+              await DatabaseMethod().updateifTicked(ds["Id"],today?"Today":tommorow? "Tommorow":"This Weekend" );
             setState((){
             });
           });

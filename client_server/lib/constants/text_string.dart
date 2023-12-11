@@ -20,7 +20,7 @@ const String noAccount = "Don't Have An Account";
 const String signinWithFacebook = "Sign-in With Facebook";
 const String signinWithTwittterr = "Sign-in With Twitter";
 const String signinWithTiktok = "Sign-in With Tiktok";
-const String user = "Username";
+const String userName = "Username";
 const String pass = "Password";
 
 // --Sign Up Text

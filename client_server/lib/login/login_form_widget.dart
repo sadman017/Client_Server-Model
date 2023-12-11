@@ -18,8 +18,8 @@ class LoginForm extends StatelessWidget{
             TextFormField(
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person_outline),
-                labelText: user,
-                hintText: user,
+                labelText: userName,
+                hintText: userName,
                 border: OutlineInputBorder()
               ),
             ),

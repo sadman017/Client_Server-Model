@@ -1,7 +1,7 @@
 import 'package:client_server/constants/size.dart';
 import 'package:client_server/constants/text_string.dart';
 import 'package:client_server/controllers/signup_cotroller.dart';
-import 'package:client_server/forget_password/forget_password_otp/otp_screen.dart';
+import 'package:client_server/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,7 @@ class SignupForm extends StatelessWidget{
             TextFormField(
               controller:  controller.userName,
               decoration: const InputDecoration(
-                label: Text(user),
+                label: Text(userName),
                 prefixIcon: Icon(Icons.person_outline_rounded),
               ),
             ),
@@ -66,8 +66,9 @@ class SignupForm extends StatelessWidget{
               child: ElevatedButton(onPressed: () {
                 if(_formkey.currentState!.validate()){
                   // SignupController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
-                  SignupController.instance.phoneAuthentication(controller.mobileNo.text.trim());
-                  Get.to(() => const OTPScreen());
+                  // SignupController.instance.phoneAuthentication(controller.mobileNo.text.trim());
+                  final user = UserModal(email: controller.email.text.trim(), user: controller.userName.text.trim(), password: controller.password.text.trim(), mobileNo: controller.mobileNo.text.trim(),);
+                  SignupController.instance.createUser(user);
                 }
               }, 
               child: Text(signup.toUpperCase()),
