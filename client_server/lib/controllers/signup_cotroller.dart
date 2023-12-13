@@ -12,6 +12,11 @@ class SignupController extends GetxController{
   final userName = TextEditingController();
   final mobileNo = TextEditingController();
   final userRepo = Get.put(UserRepository());
+    var isPasswordVisible = false.obs;
+
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  }
   void registerUser(String email, String password){
    String? error = AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password) as String?;
    if(error != null){

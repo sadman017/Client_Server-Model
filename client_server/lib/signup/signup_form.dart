@@ -10,7 +10,7 @@ class SignupForm extends StatelessWidget{
    SignupForm({super.key});
   
   final controller = Get.put(SignupController());
-  final _formkey = GlobalKey<FormState>();
+  static final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,15 +39,18 @@ class SignupForm extends StatelessWidget{
             const Gap(20),
             TextFormField(
                controller: controller.password,
-               decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.key_outlined),
+               obscureText: !controller.isPasswordVisible.value,
+               decoration:  InputDecoration(
+                prefixIcon: const Icon(Icons.key_outlined),
                 labelText: pass,
                 hintText: pass,
-                suffixIcon: IconButton(
-                  onPressed: null, 
-                  icon: Icon(Icons.remove_red_eye_sharp),
+                suffixIcon: Obx(() => IconButton(
+                  onPressed: () {
+                     controller.togglePasswordVisibility();
+                  }, 
+                  icon: Icon(  controller.isPasswordVisible.value ? Icons.visibility : Icons.visibility_off,),
 
-                )
+                )),
               ),
             ),
             const Gap(20),
