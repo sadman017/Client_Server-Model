@@ -1,10 +1,10 @@
 //App Text Strings
 
-const String appName = "E-Code Verifier";
+const String appName = "Todo App";
 
 //Welcome Screen Text
-const String welcomeTitle = "Verify Ecode Of Your Product";
-const String welcomeSubTitle = "Know product category, nutrition value and many more";
+const String welcomeTitle = "Unleash your productivity";
+const String welcomeSubTitle = "Manage your time to make the full use of the day";
 
 //--Generic Text
 const String login = "Login";
@@ -19,7 +19,6 @@ const String forgetPass = "Forget Password";
 const String noAccount = "Don't Have An Account";
 const String signinWithFacebook = "Sign-in With Facebook";
 const String signinWithTwittterr = "Sign-in With Twitter";
-const String signinWithTiktok = "Sign-in With Tiktok";
 const String userName = "Username";
 const String pass = "Password";
 

@@ -14,7 +14,7 @@ class DatabaseMethod{
   }
 
   Future<Stream<QuerySnapshot>> getalltheWork(String day) async{
-    return FirebaseFirestore.instance.collection(day).snapshots();
+    return await FirebaseFirestore.instance.collection(day).snapshots();
   }
   updateifTicked(String id, String day)async{
     return await FirebaseFirestore.instance.collection(day).doc(id).update({"Yes":true});
